@@ -19,18 +19,12 @@ function LinearAlgebra.dot(a::CustomComplex, b::CustomComplex)
 end
 
 @testset "complex_math.jl" begin
-    @testset "dot" begin
+    @testset "realdot" begin
         scalars = (randn(), randn(ComplexF64), CustomComplex(reim(randn(ComplexF64))...))
         arrays = (randn(10), randn(ComplexF64, 10))
         for inputs in (scalars, arrays)
             for x in inputs, y in inputs
                 @test realdot(x, y) == real(dot(x, y))
-
-                if eltype(x) <: Real && eltype(y) <: Real
-                    @test imagdot(x, y) === ZeroTangent()
-                else
-                    @test imagdot(x, y) == imag(dot(x, y))
-                end
             end
         end
     end
