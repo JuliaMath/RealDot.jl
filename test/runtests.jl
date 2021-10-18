@@ -47,7 +47,7 @@ function Base.:*(q::Quaternion, w::Union{Real,Complex,CustomComplex})
     a, b = reim(w)
     return q * Quaternion(a, b, zero(a), zero(a))
 end
-Base.:*(q::Union{Real,Complex,CustomComplex}, w::Quaternion) = w * q
+Base.:*(w::Union{Real,Complex,CustomComplex}, q::Quaternion) = conj(conj(q) * conj(w))
 
 @testset "RealDot.jl" begin
     scalars = (
