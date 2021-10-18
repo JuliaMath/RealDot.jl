@@ -14,7 +14,7 @@ numbers. In particular, this computation shows up in pullbacks for non-holomorph
 functions.
 """
 @inline realdot(x, y) = real(LinearAlgebra.dot(x, y))
-@inline realdot(x::Number, y::Number) = muladd(real(x), real(y), imag(x) * imag(y))
+@inline realdot(x::Complex, y::Complex) = muladd(real(x), real(y), imag(x) * imag(y))
 @inline realdot(x::Real, y::Number) = x * real(y)
 @inline realdot(x::Number, y::Real) = real(x) * y
 @inline realdot(x::Real, y::Real) = x * y
