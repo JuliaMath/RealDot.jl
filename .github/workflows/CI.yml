@@ -51,7 +51,7 @@ jobs:
         if: matrix.version == '1' && matrix.os == 'ubuntu-latest'
         with:
           file: lcov.info
-      - uses: coverallsapp/github-action@v1
+      - uses: coverallsapp/github-action@v2
         if: matrix.version == '1' && matrix.os == 'ubuntu-latest'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
